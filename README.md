@@ -2,8 +2,9 @@
 
 To run the application:
 
-* Install mysql locally (ex. `brew install mysql`)
+* Install postgresql
 * `bundle install`
+* `rake db:create`
 * `rake db:migrate`
 * `rake db:seed`
 
