@@ -8,7 +8,8 @@ class Users::SessionsController < Devise::SessionsController
     authenticate_with_http_basic do |email, password|
       success, user = User.valid_login?(email, password)
       if success
-        render json: user.as_json(only: [:email, :authentication_token]), status: :created
+        render json: user.as_json(only: [:email, :authentication_token]).merge('paymentspring_api_key': Rails.application.config.PAYMENTSPRING_API_KEY),
+                    status: :created
       else
         head :unauthorized
       end
