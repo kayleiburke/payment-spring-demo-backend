@@ -84,4 +84,5 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   config.PAYMENTSPRING_API_KEY = ENV['PAYMENTSPRING_API_KEY']
+  config.PAYMENTSPRING_PRIVATE_API_KEY = ENV['PAYMENTSPRING_PRIVATE_API_KEY']
 end

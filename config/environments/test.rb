@@ -45,4 +45,5 @@ Rails.application.configure do
   # config.action_view.raise_on_missing_translations = true
 
   config.PAYMENTSPRING_API_KEY = ENV['PAYMENTSPRING_API_KEY']
+  config.PAYMENTSPRING_PRIVATE_API_KEY = ENV['PAYMENTSPRING_PRIVATE_API_KEY']
 end

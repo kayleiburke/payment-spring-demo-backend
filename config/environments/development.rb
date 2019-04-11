@@ -53,4 +53,5 @@ Rails.application.configure do
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
   config.PAYMENTSPRING_API_KEY = ENV['PAYMENTSPRING_API_KEY']
+  config.PAYMENTSPRING_PRIVATE_API_KEY = ENV['PAYMENTSPRING_PRIVATE_API_KEY']
 end
