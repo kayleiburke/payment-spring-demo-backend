@@ -1,5 +1,5 @@
 # PaymentSpring Gateway API
-This site is the API portion of a small project built for a job application at PaymentSpring, as well as to showcase some web development skills.  The finished product will allow users to make sample payments, using PaymentSpring as a payment processing system. The code for the front end is found [here](https://github.com/kayleiburke/PaymentSpringGatewayPortal).
+This site is the API portion of a small project built to showcase some web development skills. This API is simple and provides authentication functionality, and well as the API keys for a [PaymentSpring account](https://paymentspring.com/signup) (see [PaymentSpring documentation](https://docs.paymentspring.com) for details on API keys). The code for the front end is found [here](https://github.com/kayleiburke/PaymentSpringGatewayPortal).
 
 The live demo site can be accessed at: https://payment-spring-gateway-portal.herokuapp.com
 
