@@ -8,6 +8,8 @@ class Users::SessionsController < Devise::SessionsController
     authenticate_with_http_basic do |email, password|
       success, user = User.valid_login?(email, password)
       if success
+        sign_in(User.find_by(email: email), scope: :user)
+
         paymentSpringData = {
             paymentspring_api_key: Rails.application.config.PAYMENTSPRING_API_KEY,
             paymentspring_private_api_key: Rails.application.config.PAYMENTSPRING_PRIVATE_API_KEY
