@@ -4,9 +4,7 @@ class ApplicationController < ActionController::API
   include ActionController::HttpAuthentication::Basic::ControllerMethods
   include ActionController::HttpAuthentication::Token::ControllerMethods
 
-  acts_as_token_authentication_handler_for User
-
-  alias_method :devise_current_user, :current_user
+  acts_as_token_authentication_handler_for User, fallback_to_devise: false
 
   def current_user
     authenticate_with_http_token do |token, options|
