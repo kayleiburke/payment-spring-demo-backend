@@ -18,5 +18,6 @@ class Api::V1::PaymentsController < ApplicationController
     end
 
     parsed_response = JSON.parse(response.body)
+    render json: parsed_response
   end
 end

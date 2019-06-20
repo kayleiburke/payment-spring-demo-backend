@@ -21,6 +21,7 @@ gem 'responders'
 gem 'rack-cors'
 gem 'simple_token_authentication'
 gem 'faraday'
+gem 'faraday_middleware'
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
