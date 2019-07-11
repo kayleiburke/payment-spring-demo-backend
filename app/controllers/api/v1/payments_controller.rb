@@ -2,6 +2,7 @@ class Api::V1::PaymentsController < ApplicationController
   before_action :authenticate_user!
   include Api::V1::Concerns::PaymentspringApiConcern
   include ActionView::Helpers::DateHelper
+  include ActionView::Helpers::NumberHelper
   require 'date'
 
   def index
@@ -15,7 +16,7 @@ class Api::V1::PaymentsController < ApplicationController
       response = response["list"].sort_by { |h| h["created_at"] }.group_by { |h| Date.parse((Time.parse h["created_at"]).getlocal.to_s) }.map do |k,v|
         amount = (v.map {|h1| h1["amount_settled"]}.sum)/100.0
         total_donations += amount
-        [k.strftime("%m/%d"), amount]
+        [k.strftime("%m/%d"), { v: amount, f: number_to_currency(amount)}]
       end
 
       start_date = Date.parse(response[0][0])
