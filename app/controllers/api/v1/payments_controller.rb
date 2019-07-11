@@ -8,7 +8,7 @@ class Api::V1::PaymentsController < ApplicationController
     response = call_api('api/v1/transactions', {}, { limit: 100, offset: 0 }, "GET")
 
     if response["list"]
-      response = response["list"].sort_by { |h| h["created_at"] }.group_by { |h| Date.parse h["created_at"] }.map do |k,v|
+      response = response["list"].sort_by { |h| h["created_at"] }.group_by { |h| Date.parse((Time.parse h["created_at"]).getlocal.to_s) }.map do |k,v|
         amount = v.map {|h1| h1["amount_settled"]}.inject(:+)/100.0
         [k.strftime("%m/%d"), amount]
       end
