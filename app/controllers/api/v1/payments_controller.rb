@@ -28,9 +28,15 @@ class Api::V1::PaymentsController < ApplicationController
           total: total_donations.round(2),
           timespan: distance_of_time_in_words(start_date, end_date)
       }.to_json
-    end
 
-    render json: response
+      render json: response
+    else
+      if response["errors"]
+        render json: {
+            errors: response["errors"]
+        }, status: :unprocessable_entity
+      end
+    end
   end
 
   def create
@@ -42,6 +48,12 @@ class Api::V1::PaymentsController < ApplicationController
 
     parsed_response = call_api('api/v1/charge', body, {}, "POST")
 
-    render json: parsed_response
+    if parsed_response["errors"]
+      render json: {
+          errors: parsed_response["errors"]
+      }, status: :unprocessable_entity
+    else
+      render json: parsed_response
+    end
   end
 end

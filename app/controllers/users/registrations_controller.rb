@@ -33,7 +33,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
       clean_up_passwords resource
       set_minimum_password_length
       render json: {
-          errors: "This email address has already been taken"
+          errors: ["This email address has already been taken"]
       }, status: :unprocessable_entity
     end
   end
