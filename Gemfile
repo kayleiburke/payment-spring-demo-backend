@@ -22,6 +22,8 @@ gem 'rack-cors'
 gem 'simple_token_authentication'
 gem 'faraday'
 gem 'faraday_middleware'
+gem 'bootstrap-email'
+gem 'sprockets-rails'
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'

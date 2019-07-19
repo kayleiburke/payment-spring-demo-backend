@@ -55,6 +55,8 @@ Rails.application.configure do
   # config.active_job.queue_name_prefix = "untitled1_#{Rails.env}"
 
   config.action_mailer.perform_caching = false
+  config.action_mailer.default_url_options = { :host => 'payment-spring-gateway-portal.herokuapp.com' }
+  config.action_mailer.perform_deliveries = true
 
   # Ignore bad email addresses and do not raise email delivery errors.
   # Set this to true and configure the email server for immediate delivery to raise delivery errors.
@@ -85,4 +87,16 @@ Rails.application.configure do
 
   config.PAYMENTSPRING_API_KEY = ENV['PAYMENTSPRING_API_KEY']
   config.PAYMENTSPRING_PRIVATE_API_KEY = ENV['PAYMENTSPRING_PRIVATE_API_KEY']
+  config.PAYMENTSPRING_GATEWAY_PORTAL_URL = ENV['PAYMENTSPRING_GATEWAY_PORTAL_URL']
+
+  ActionMailer::Base.delivery_method = :smtp
+  ActionMailer::Base.smtp_settings = {
+      :user_name => ENV['SENDGRID_USERNAME'],
+      :password => ENV['SENDGRID_PASSWORD'],
+      :domain => 'heroku.com',
+      :address => 'smtp.sendgrid.net',
+      :port => 587,
+      :authentication => :plain,
+      :enable_starttls_auto => true
+  }
 end
