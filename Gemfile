@@ -22,6 +22,7 @@ gem 'rack-cors'
 gem 'simple_token_authentication'
 gem 'faraday'
 gem 'faraday_middleware'
+gem 'sass-rails'
 gem 'bootstrap-email'
 gem 'sprockets-rails'
 
