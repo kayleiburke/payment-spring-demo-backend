@@ -9,6 +9,11 @@ Rails.application.routes.draw do
   namespace :api  do
     namespace :v1 do
       resources :payments
+      resources :recaptchas do
+        collection do
+          post :verify
+        end
+      end
     end
   end
 
