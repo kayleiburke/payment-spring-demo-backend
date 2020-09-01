@@ -1,5 +1,5 @@
 # API for Sample Authenticated Donation Site
-This site is the API portion of a small project built to showcase some web development skills. This API is simple and provides authentication functionality, and well as the API keys for a PaymentSpring account (see [Getting Started](#getting-started) for instructions on setting up a PaymentSpring account). The code for the front end is found [here](https://github.com/kayleiburke/PaymentSpringGatewayPortal). 
+This site is the API portion of a small project built to showcase some web development skills. This API is simple and provides authentication functionality, and well as the API keys for a PaymentSpring account (see [Getting Started](#getting-started) for instructions on setting up a PaymentSpring account). The code for the front end is found [here](https://github.com/kayleiburke/Sample-Authenticated-Donation-Site-Front-End). 
 
 The live demo site can be accessed at: https://payment-spring-demo.herokuapp.com.  
 
@@ -21,6 +21,7 @@ To run the application:
 - Create the following environment variables:
     - **PAYMENTSPRING_API_KEY**: holds your PaymentSpring public API key 
     - **PAYMENTSPRING_PRIVATE_API_KEY**: holds your PaymentSpring private API key
+    - **RECAPTCHA_SECRET_KEY**: holds the secret key for reCAPTCHA v3 ([see front end codebase for more details on reCAPTCHA setup](https://github.com/kayleiburke/Sample-Authenticated-Donation-Site-Front-End))
 - Open your terminal
 - Navigate to the project
 - Run the following commands to set up the environment:
