@@ -25,6 +25,7 @@ gem 'faraday_middleware'
 gem 'sass-rails'
 gem 'bootstrap-email'
 gem 'sprockets-rails'
+gem 'mailgun-ruby'
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
