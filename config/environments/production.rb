@@ -89,10 +89,14 @@ Rails.application.configure do
   config.PAYMENTSPRING_PRIVATE_API_KEY = ENV['PAYMENTSPRING_PRIVATE_API_KEY']
   config.PAYMENTSPRING_GATEWAY_PORTAL_URL = ENV['PAYMENTSPRING_GATEWAY_PORTAL_URL']
 
-  config.action_mailer.delivery_method = :mailgun
-  config.action_mailer.mailgun_settings = {
-      api_key: ENV['MAILGUN_API_KEY'],
-      domain: 'sample.com',
-      # api_host: 'api.eu.mailgun.net'  # Uncomment this line for EU region domains
+  ActionMailer::Base.delivery_method = :smtp
+  ActionMailer::Base.smtp_settings = {
+      :user_name => 'apikey',
+      :password => ENV['SENDGRID_API_KEY'],
+      :domain => 'heroku.com',
+      :address => 'smtp.sendgrid.net',
+      :port => 587,
+      :authentication => :plain,
+      :enable_starttls_auto => true
   }
 end
