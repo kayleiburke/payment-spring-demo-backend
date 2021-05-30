@@ -40,13 +40,13 @@ class Api::V1::PaymentsController < ApplicationController
   end
 
   def create
-    body = {
+    payment_params = {
         token: params[:token],
         amount: params[:amount],
         send_receipt: params[:send_receipt]
-    }.to_json
+    }
 
-    parsed_response = call_api('api/v1/charge', body, {}, "POST")
+    parsed_response = call_api('api/v1/charge', {}.to_json, payment_params, "POST")
 
     if parsed_response["errors"]
       render json: {
