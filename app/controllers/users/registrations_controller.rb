@@ -39,7 +39,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
       end
     rescue Exception => e
       render json: {
-          errors: [e.to_s]
+          errors: [e.class.to_s + ": " + e.to_s]
       }, status: :unprocessable_entity
     end
   end
