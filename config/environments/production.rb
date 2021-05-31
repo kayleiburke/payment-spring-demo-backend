@@ -92,6 +92,8 @@ Rails.application.configure do
   config.PAYMENTSPRING_PRIVATE_API_KEY = ENV['PAYMENTSPRING_PRIVATE_API_KEY']
   config.PAYMENTSPRING_GATEWAY_PORTAL_URL = ENV['PAYMENTSPRING_GATEWAY_PORTAL_URL']
 
+  config.RECAPTCHA_SECRET_KEY = ENV['RECAPTCHA_SECRET_KEY']
+
   ActionMailer::Base.delivery_method = :smtp
   ActionMailer::Base.smtp_settings = {
       :user_name => 'apikey',
