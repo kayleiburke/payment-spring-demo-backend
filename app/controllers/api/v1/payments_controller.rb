@@ -23,6 +23,9 @@ class Api::V1::PaymentsController < ApplicationController
       response = response["list"].sort_by { |h| h["created_at"] }.group_by { |h| Date.parse((Time.parse h["created_at"]).getlocal.to_s) }.map do |k,v|
         amount = (v.map {|h1| h1["amount_settled"]}.sum)/100.0
         total_donations += amount
+
+        create_payment(v[0], amount)
+
         [k.strftime("%m/%d"), { v: amount, f: number_to_currency(amount)}]
       end
 
@@ -51,7 +54,8 @@ class Api::V1::PaymentsController < ApplicationController
     payment_params = {
         token: params[:token],
         amount: params[:amount],
-        send_receipt: params[:send_receipt]
+        send_receipt: params[:send_receipt],
+        customer_id: current_user.id
     }
 
     parsed_response = call_api('api/v1/charge', {}.to_json, payment_params, "POST")
@@ -59,7 +63,7 @@ class Api::V1::PaymentsController < ApplicationController
     if parsed_response["errors"]
       handle_error(parsed_response["errors"])
     else
-      Payment.create(user: current_user, amount: params[:amount]/100, description: params[:description])
+      Payment.create(user: current_user, amount: params[:amount]/100.0, description: params[:description], payment_id: parsed_response["id"], created_at: parsed_response["created_at"])
       render json: parsed_response
     end
   end
@@ -70,5 +74,28 @@ class Api::V1::PaymentsController < ApplicationController
     render json: {
         errors: error_message
     }, status: :unprocessable_entity
+  end
+
+  # create a payment in our local database if there exists a past payment in PaymentSpring that
+  # has not been accounted for in our local db
+  def create_payment(data, amount)
+    payment_id = data["id"]
+    customer_id = data["customer_id"]
+
+    if !customer_id
+      default_user = User.find_by(email: "kaylei.burke@gmail.com")
+      payment = Payment.find_by(payment_id: payment_id)
+
+      if !payment
+        payment = Payment.find_by(amount: amount, payment_id: payment_id)
+
+        if payment
+          payment.payment_id = payment_id
+          payment.save
+        else
+          Payment.create(amount: amount, payment_id: payment_id, user: default_user, created_at: data["created_at"])
+        end
+      end
+    end
   end
 end
