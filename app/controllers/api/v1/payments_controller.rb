@@ -78,7 +78,8 @@ class Api::V1::PaymentsController < ApplicationController
     }, status: :unprocessable_entity
   end
 
-  # create a payment in our local database if there exists a past payment in PaymentSpring that
+  # temporary - remove this later
+  # create a payment in our local database if there exists a payment in PaymentSpring that
   # has not been accounted for in our local db
   def create_payment(data)
     payment_id = data["id"]
@@ -96,9 +97,6 @@ class Api::V1::PaymentsController < ApplicationController
       else
         Payment.create(amount: amount/100, payment_id: payment_id, user: default_user, created_at: data["created_at"])
       end
-    else
-      payment.amount = amount/100
-      payment.save
     end
   end
 end
