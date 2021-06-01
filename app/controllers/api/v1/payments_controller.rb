@@ -24,7 +24,9 @@ class Api::V1::PaymentsController < ApplicationController
         amount = (v.map {|h1| h1["amount_settled"]}.sum)/100.0
         total_donations += amount
 
-        create_payment(v[0], amount)
+        v.each do |transaction|
+          create_payment(transaction)
+        end
 
         [k.strftime("%m/%d"), { v: amount, f: number_to_currency(amount)}]
       end
@@ -78,8 +80,9 @@ class Api::V1::PaymentsController < ApplicationController
 
   # create a payment in our local database if there exists a past payment in PaymentSpring that
   # has not been accounted for in our local db
-  def create_payment(data, amount)
+  def create_payment(data)
     payment_id = data["id"]
+    amount = data["amount_settled"]
 
     default_user = User.find_by(email: "kaylei.burke@gmail.com")
     payment = Payment.find_by(payment_id: payment_id)
