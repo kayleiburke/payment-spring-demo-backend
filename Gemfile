@@ -26,6 +26,7 @@ gem 'sass-rails'
 gem 'bootstrap-email'
 gem 'sprockets-rails'
 gem 'mailgun-ruby'
+gem 'will_paginate'
 
 # Use ActiveStorage variant
 # gem 'mini_magick', '~> 4.8'
