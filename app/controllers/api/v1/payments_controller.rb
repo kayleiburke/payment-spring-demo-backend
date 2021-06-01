@@ -80,21 +80,18 @@ class Api::V1::PaymentsController < ApplicationController
   # has not been accounted for in our local db
   def create_payment(data, amount)
     payment_id = data["id"]
-    customer_id = data["customer_id"]
 
-    if !customer_id
-      default_user = User.find_by(email: "kaylei.burke@gmail.com")
-      payment = Payment.find_by(payment_id: payment_id)
+    default_user = User.find_by(email: "kaylei.burke@gmail.com")
+    payment = Payment.find_by(payment_id: payment_id)
 
-      if !payment
-        payment = Payment.find_by(amount: amount, payment_id: nil)
+    if !payment
+      payment = Payment.find_by(amount: amount, payment_id: nil)
 
-        if payment
-          payment.payment_id = payment_id
-          payment.save
-        else
-          Payment.create(amount: amount, payment_id: payment_id, user: default_user, created_at: data["created_at"])
-        end
+      if payment
+        payment.payment_id = payment_id
+        payment.save
+      else
+        Payment.create(amount: amount, payment_id: payment_id, user: default_user, created_at: data["created_at"])
       end
     end
   end
