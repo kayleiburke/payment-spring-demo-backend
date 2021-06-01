@@ -53,8 +53,8 @@ Rails.application.configure do
   # routes, locales, etc. This feature depends on the listen gem.
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
-  config.PAYMENTSPRING_API_KEY = ENV['PAYMENTSPRING_API_KEY']
-  config.PAYMENTSPRING_PRIVATE_API_KEY = ENV['PAYMENTSPRING_PRIVATE_API_KEY']
+  config.PAYMENTSPRING_API_KEY = 'test_fb4594e0cee42ef4222b8772d2e8e5fd64615efccff45c3de6b2fe074e'
+  config.PAYMENTSPRING_PRIVATE_API_KEY = 'test_86a032ec6e27cc280597f4d51d'
   config.PAYMENTSPRING_GATEWAY_PORTAL_URL = ENV['PAYMENTSPRING_GATEWAY_PORTAL_URL']
 
   config.RECAPTCHA_SECRET_KEY = ENV['RECAPTCHA_SECRET_KEY']

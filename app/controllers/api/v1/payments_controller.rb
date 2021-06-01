@@ -6,6 +6,13 @@ class Api::V1::PaymentsController < ApplicationController
   require 'date'
 
   def index
+    payments = Payment.all.order(created_at: :desc).page(params[:page]).per_page(params[:per_page].to_i)
+    total_pages =  (Payment.all.count/params[:per_page].to_f).ceil
+
+    render json: { total_pages: total_pages, payments: JSON.parse(payments.to_json({:include => :user})) }.to_json
+  end
+
+  def chart_data
     response = call_api('api/v1/transactions', {}, { limit: 100, offset: 0 }, "GET")
 
     total_results = 0
@@ -32,6 +39,7 @@ class Api::V1::PaymentsController < ApplicationController
       render json: response
     else
       if response["errors"]
+        Rails.logger.info "Errors from PaymentSpring: " + response["errors"]
         render json: {
             errors: response["errors"]
         }, status: :unprocessable_entity
@@ -49,11 +57,18 @@ class Api::V1::PaymentsController < ApplicationController
     parsed_response = call_api('api/v1/charge', {}.to_json, payment_params, "POST")
 
     if parsed_response["errors"]
-      render json: {
-          errors: parsed_response["errors"]
-      }, status: :unprocessable_entity
+      handle_error(parsed_response["errors"])
     else
+      Payment.create(user: current_user, amount: params[:amount]/100, description: params[:description])
       render json: parsed_response
     end
+  end
+
+  private
+
+  def handle_error(error_message)
+    render json: {
+        errors: error_message
+    }, status: :unprocessable_entity
   end
 end
