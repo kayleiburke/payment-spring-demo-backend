@@ -94,8 +94,11 @@ class Api::V1::PaymentsController < ApplicationController
         payment.payment_id = payment_id
         payment.save
       else
-        Payment.create(amount: amount, payment_id: payment_id, user: default_user, created_at: data["created_at"])
+        Payment.create(amount: amount/100, payment_id: payment_id, user: default_user, created_at: data["created_at"])
       end
+    else
+      payment.amount = amount/100
+      payment.save
     end
   end
 end
