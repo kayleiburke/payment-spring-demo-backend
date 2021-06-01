@@ -87,7 +87,7 @@ class Api::V1::PaymentsController < ApplicationController
       payment = Payment.find_by(payment_id: payment_id)
 
       if !payment
-        payment = Payment.find_by(amount: amount, payment_id: payment_id)
+        payment = Payment.find_by(amount: amount, payment_id: nil)
 
         if payment
           payment.payment_id = payment_id
