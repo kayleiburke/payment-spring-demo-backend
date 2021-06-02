@@ -23,11 +23,10 @@ To run the application:
     - **PAYMENTSPRING_PRIVATE_API_KEY**: holds your PaymentSpring private API key
     - **RECAPTCHA_SECRET_KEY**: holds the secret key for reCAPTCHA v3 ([see front end codebase for more details on reCAPTCHA setup](https://github.com/kayleiburke/payment-spring-demo))
 - Run the following commands to set up the environment:
-    - `bundle install`
-    - `rake db:create`
-    - `rake db:migrate`
-    - `rake db:seed`
-- Start the server by running `rails s`
+```
+rake db:setup
+rails s
+```
 
 ## Demo API
 This code is deployed to https://whispering-cove-68110.herokuapp.com
