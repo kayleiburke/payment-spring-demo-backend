@@ -22,7 +22,7 @@ To run the application:
     - **PAYMENTSPRING_API_KEY**: holds your PaymentSpring public API key 
     - **PAYMENTSPRING_PRIVATE_API_KEY**: holds your PaymentSpring private API key
     - **RECAPTCHA_SECRET_KEY**: holds the secret key for reCAPTCHA v3 ([see front end codebase for more details on reCAPTCHA setup](https://github.com/kayleiburke/payment-spring-demo))
-- Run the following commands to set up the environment:
+- Run the following commands to set up the environment and run the program:
 ```
 rake db:setup
 rails s
