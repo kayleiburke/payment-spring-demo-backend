@@ -1,14 +1,10 @@
 # API for payment-spring-demo
 This site is the API portion of a small project built to showcase some web development skills. This API is simple and provides authentication functionality, and well as the API keys for a PaymentSpring account (see [Getting Started](#getting-started) for instructions on setting up a PaymentSpring account). The code for the front end is found [here](https://github.com/kayleiburke/payment-spring-demo). 
 
-The live demo site can be accessed at: https://payment-spring-demo.herokuapp.com.  
-
-- **Username:**  kaylei.burke@gmail.com
-- **Password:** \*paymentspring*
-
+The live demo site can be accessed at: https://payment-spring-demo.herokuapp.com. 
 
 ## Getting Started
-To run the application:
+To run the application locally:
 
 - Install PostgreSQL from [PostgreSQL Official Page](https://www.postgresql.org/) 
 - If you don't have one already, [create a PaymentSpring account](https://paymentspring.com/signup)
