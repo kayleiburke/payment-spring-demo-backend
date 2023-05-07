@@ -1,14 +1,10 @@
 # API for payment-spring-demo
 This site is the API portion of a small project built to showcase some web development skills. This API is simple and provides authentication functionality, and well as the API keys for a PaymentSpring account (see [Getting Started](#getting-started) for instructions on setting up a PaymentSpring account). The code for the front end is found [here](https://github.com/kayleiburke/payment-spring-demo). 
 
-The live demo site can be accessed at: https://payment-spring-demo.herokuapp.com.  
-
-- **Username:**  kaylei.burke@gmail.com
-- **Password:** \*paymentspring*
-
+The live demo site can be accessed at: https://payment-spring-demo.herokuapp.com. 
 
 ## Getting Started
-To run the application:
+To run the application locally:
 
 - Install PostgreSQL from [PostgreSQL Official Page](https://www.postgresql.org/) 
 - If you don't have one already, [create a PaymentSpring account](https://paymentspring.com/signup)
@@ -22,12 +18,11 @@ To run the application:
     - **PAYMENTSPRING_API_KEY**: holds your PaymentSpring public API key 
     - **PAYMENTSPRING_PRIVATE_API_KEY**: holds your PaymentSpring private API key
     - **RECAPTCHA_SECRET_KEY**: holds the secret key for reCAPTCHA v3 ([see front end codebase for more details on reCAPTCHA setup](https://github.com/kayleiburke/payment-spring-demo))
-- Run the following commands to set up the environment:
-    - `bundle install`
-    - `rake db:create`
-    - `rake db:migrate`
-    - `rake db:seed`
-- Start the server by running `rails s`
+- Run the following commands to set up the environment and run the program:
+```
+rake db:setup
+rails s
+```
 
 ## Demo API
 This code is deployed to https://whispering-cove-68110.herokuapp.com
