@@ -1,10 +1,10 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '2.6.0'
+ruby '3.1.1'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
-gem 'rails', '~> 5.2.3'
+gem 'rails', '~> 6.1.0'
 # Use sqlite3 as the database for Active Record
 # gem 'sqlite3'
 gem 'pg'
@@ -16,14 +16,14 @@ gem 'puma', '~> 3.11'
 # gem 'redis', '~> 4.0'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
-gem 'devise'
+gem 'devise', '~> 4.8'
 gem 'responders'
 gem 'rack-cors'
-gem 'simple_token_authentication'
+gem 'simple_token_authentication', '~> 1.0'
 gem 'faraday'
 gem 'faraday_middleware'
 gem 'sass-rails'
-gem 'bootstrap-email'
+gem 'bootstrap-email', '~> 1.4.0'
 gem 'sprockets-rails'
 gem 'mailgun-ruby'
 gem 'will_paginate'
