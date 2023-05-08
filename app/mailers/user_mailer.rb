@@ -5,7 +5,7 @@ class UserMailer < Devise::Mailer
 
   def devise_mail(record, action, opts={})
     initialize_from_record(record)
-    make_bootstrap_mail(headers_for(action, opts)) do |format|
+    bootstrap_mail(headers_for(action, opts)) do |format|
       format.text
       format.html
     end
