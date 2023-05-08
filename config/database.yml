@@ -82,4 +82,7 @@ development:
 production:
   <<: *default
   adapter: postgresql
-  database: <%= ENV['DATABASE_URL'] %>
+  host: <%= ENV['DATABASE_HOST'] %>
+  database: <%= ENV['DATABASE'] %>
+  username: <%= ENV['DATABASE_USER'] %>
+  password: <%= ENV['DATABASE_PASSWORD'] %>
