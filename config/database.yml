@@ -81,6 +81,4 @@ development:
 #
 production:
   <<: *default
-  database: whispering-cove-68110
-  username: whispering-cove-68110
-  password: <%= ENV['MYAPP_DATABASE_PASSWORD'] %>
+  url: <%= ENV['DATABASE_URL'] %>
