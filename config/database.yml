@@ -23,8 +23,12 @@ default: &default
 
 development:
   <<: *default
-  database: payment_spring_gateway
-  password: root
+  adapter: postgresql
+  host: ec2-107-21-67-46.compute-1.amazonaws.com
+  database: d1h8ph3mum0d1d
+  username: zumkrkawugqqxj
+  password: e6b435d0860a0135f44a7b7fa97a45115f47b62678372db56160310ddafbf7a8
+  port: 5432
 
   # The specified database role being used to connect to postgres.
   # To create additional roles in postgres see `$ createuser --help`.

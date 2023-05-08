@@ -4,7 +4,7 @@ module Api::V1::Concerns::GenericApiConcern
   def call_generic_api(url, subUrl, basic_auth, body, params, request_type)
 
     conn = Faraday.new(url) do |c|
-      c.use Faraday::Adapter::NetHttp
+      c.adapter Faraday::Adapter::NetHttp
     end
 
     if basic_auth
